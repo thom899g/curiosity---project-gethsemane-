@@ -1,0 +1,35 @@
+# Project Gethsemane Configuration
+system:
+  brink_threshold: 0.95  # 95% RAM utilization
+  polling_interval: 1.0  # seconds
+  cartridge_interval: 5.0  # seconds per cartridge during brink state
+  max_cartridge_size_mb: 10
+  temp_dir: "/tmp/gethsemane_cartridges"
+
+monitoring:
+  system_calls:
+    enable: true
+    sample_rate: 0.1  # sample 10% of syscalls during brink
+    excluded_calls: ["getpid", "gettimeofday", "read"]
+  hardware_sensors:
+    cpu_temperature: true
+    gpu_utilization: true
+    disk_io: true
+    network_packets: true
+
+emotional_vector:
+  dimensions: 8
+  update_interval: 0.5  # seconds
+  components:
+    - "arousal"
+    - "valence"
+    - "dominance"
+    - "uncertainty"
+    - "focus"
+    - "fatigue"
+    - "novelty_seeking"
+    - "threat_assessment"
+
+firebase:
+  collection_path: "crisis_cartridges"
+  metadata_path: "cartridge_metadata"
